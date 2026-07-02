@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <title>KRthree.js 예제</title>
+  <style>
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #1a1a1a; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <!-- 1) KRthree.js 한 줄 (three.js가 안에 들어 있어요) -->
+  <script src="KRthree.js"></script>
+  <script>
+    // 한국어 함수를 전역으로 등록 (이 두 줄은 그대로 두세요)
+    Object.assign(window, KCC3D)
+    window.THREE = KCC3D.THREE
+  </script>
+
+  <!-- 2) 내가 작성하는 코드 -->
+  <script src="내코드.js"></script>
+</body>
+</html>

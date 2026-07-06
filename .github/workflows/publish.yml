@@ -1,0 +1,30 @@
+# GitHub Release를 발행하면 npm에 자동 배포하는 워크플로.
+# 버전은 릴리스 태그(v1.0.1)를 그대로 따라간다 — package.json을 미리 고칠 필요 없음.
+# 준비물: 저장소 Secrets에 NPM_TOKEN (npm Granular Access Token, krthree 쓰기 권한)
+name: npm 배포
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: 버전을 릴리스 태그에 맞추기 (v1.0.1 → 1.0.1)
+        run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
+
+      - name: npm에 배포
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

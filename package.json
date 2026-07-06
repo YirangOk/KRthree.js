@@ -1,0 +1,28 @@
+{
+  "name": "krthree",
+  "version": "1.0.0",
+  "description": "한국어 함수로 three.js 3D 코딩을 하는 라이브러리. three.js가 번들되어 있어 설치가 필요 없습니다. (KRthree.js)",
+  "main": "KRthree.js",
+  "unpkg": "KRthree.js",
+  "jsdelivr": "KRthree.js",
+  "files": [
+    "KRthree.js"
+  ],
+  "keywords": [
+    "three",
+    "threejs",
+    "3d",
+    "korean",
+    "한국어",
+    "korean-coding",
+    "creative-coding",
+    "education"
+  ],
+  "author": "Yirang Ok",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YirangOk/KRthree.js.git"
+  },
+  "homepage": "https://github.com/YirangOk/KRthree.js#readme"
+}

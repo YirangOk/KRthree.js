@@ -37,6 +37,7 @@ var KCC3D = (() => {
     \uBC14\uB77C\uBCF4\uAE30: () => \uBC14\uB77C\uBCF4\uAE30,
     \uBC30\uACBD\uC0C9\uC124\uC815: () => \uBC30\uACBD\uC0C9\uC124\uC815,
     \uBE5B\uCD94\uAC00\uD558\uAE30: () => \uBE5B\uCD94\uAC00\uD558\uAE30,
+    \uC0BC\uCC28\uC6D0: () => \uC0BC\uCC28\uC6D0,
     \uC0BC\uCC28\uC6D0\uC2DC\uC791: () => \uC0BC\uCC28\uC6D0\uC2DC\uC791,
     \uC0C9\uB9CC\uB4E4\uAE30: () => \uC0C9\uB9CC\uB4E4\uAE30,
     \uC2DC\uACC4\uB9CC\uB4E4\uAE30: () => \uC2DC\uACC4\uB9CC\uB4E4\uAE30,
@@ -23277,7 +23278,7 @@ void main() {
     return inside;
   }
   function splitPolygon(a, b) {
-    const a2 = new Node(a.i, a.x, a.y), b2 = new Node(b.i, b.x, b.y), an = a.next, bp = b.prev;
+    const a2 = new Node2(a.i, a.x, a.y), b2 = new Node2(b.i, b.x, b.y), an = a.next, bp = b.prev;
     a.next = b;
     b.prev = a;
     a2.next = an;
@@ -23289,7 +23290,7 @@ void main() {
     return b2;
   }
   function insertNode(i, x, y, last) {
-    const p = new Node(i, x, y);
+    const p = new Node2(i, x, y);
     if (!last) {
       p.prev = p;
       p.next = p;
@@ -23307,7 +23308,7 @@ void main() {
     if (p.prevZ) p.prevZ.nextZ = p.nextZ;
     if (p.nextZ) p.nextZ.prevZ = p.prevZ;
   }
-  function Node(i, x, y) {
+  function Node2(i, x, y) {
     this.i = i;
     this.x = x;
     this.y = y;
@@ -31734,6 +31735,213 @@ void main() {
     const h = \uC138\uB85C / 2;
     const w = \uAC00\uB85C / 2;
     return new OrthographicCamera(-w, w, h, -h, near, far);
+  }
+  function \uC18D\uC131\uBCC4\uCE6D(proto, \uD55C\uAD6D\uC5B4, \uC6D0\uC5B4) {
+    if (Object.prototype.hasOwnProperty.call(proto, \uD55C\uAD6D\uC5B4)) return;
+    Object.defineProperty(proto, \uD55C\uAD6D\uC5B4, {
+      get() {
+        return this[\uC6D0\uC5B4];
+      },
+      set(v) {
+        this[\uC6D0\uC5B4] = v;
+      },
+      configurable: true
+    });
+  }
+  function \uBA54\uC11C\uB4DC\uBCC4\uCE6D(proto, \uD55C\uAD6D\uC5B4, \uC6D0\uC5B4) {
+    const p = proto;
+    if (p[\uD55C\uAD6D\uC5B4]) return;
+    Object.defineProperty(proto, \uD55C\uAD6D\uC5B4, {
+      value: function(...args) {
+        return this[\uC6D0\uC5B4].apply(this, args);
+      },
+      writable: true,
+      configurable: true
+    });
+  }
+  \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uC704\uCE58", "position");
+  \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uD68C\uC804", "rotation");
+  \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uD06C\uAE30", "scale");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uBC14\uB77C\uBCF4\uAE30", "lookAt");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uCD94\uAC00", "add");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uC81C\uAC70", "remove");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Vector3.prototype, "\uC124\uC815", "set");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Euler.prototype, "\uC124\uC815", "set");
+  \uC18D\uC131\uBCC4\uCE6D(Scene.prototype, "\uBC30\uACBD", "background");
+  \uC18D\uC131\uBCC4\uCE6D(PerspectiveCamera.prototype, "\uD654\uBA74\uBE44\uC728", "aspect");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(PerspectiveCamera.prototype, "\uD22C\uC601\uAC31\uC2E0", "updateProjectionMatrix");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(WebGLRenderer.prototype, "\uD06C\uAE30\uC124\uC815", "setSize");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(WebGLRenderer.prototype, "\uB80C\uB354\uB9C1", "render");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(WebGLRenderer.prototype, "\uC560\uB2C8\uBA54\uC774\uC158\uC2DC\uC791", "setAnimationLoop");
+  \uC18D\uC131\uBCC4\uCE6D(WebGLRenderer.prototype, "\uB3D4\uC694\uC18C", "domElement");
+  \uC18D\uC131\uBCC4\uCE6D(Texture.prototype, "\uC0C9\uACF5\uAC04", "colorSpace");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(TextureLoader.prototype, "\uBD88\uB7EC\uC624\uAE30", "load");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Clock.prototype, "\uACBD\uACFC\uC2DC\uAC04", "getDelta");
+  function \uC7AC\uC9C8\uC635\uC158\uBC88\uC5ED(opt) {
+    if (!opt) return opt;
+    const out = { ...opt };
+    const \uC62E\uAE30\uAE30 = (ko, en, \uBCC0\uD658) => {
+      if (ko in out) {
+        out[en] = \uBCC0\uD658 ? \uBCC0\uD658(out[ko]) : out[ko];
+        delete out[ko];
+      }
+    };
+    \uC62E\uAE30\uAE30("\uC0C9", "color", (v) => \uC0C9(v));
+    \uC62E\uAE30\uAE30("\uD14D\uC2A4\uCC98", "map");
+    \uC62E\uAE30\uAE30("\uAE08\uC18D\uC131", "metalness");
+    \uC62E\uAE30\uAE30("\uAC70\uCE60\uAE30", "roughness");
+    \uC62E\uAE30\uAE30("\uD22C\uBA85", "transparent");
+    \uC62E\uAE30\uAE30("\uBD88\uD22C\uBA85\uB3C4", "opacity");
+    \uC62E\uAE30\uAE30("\uC640\uC774\uC5B4\uD504\uB808\uC784", "wireframe");
+    return out;
+  }
+  var \uD45C\uC900\uC7AC\uC9C8\uD074\uB798\uC2A4 = class extends MeshStandardMaterial {
+    constructor(opt) {
+      super(\uC7AC\uC9C8\uC635\uC158\uBC88\uC5ED(opt));
+    }
+  };
+  var \uB80C\uB354\uB7EC\uD074\uB798\uC2A4 = class extends WebGLRenderer {
+    constructor(opt) {
+      const o = opt ? { ...opt } : void 0;
+      if (o && "\uC548\uD2F0\uC568\uB9AC\uC5B4\uC2F1" in o) {
+        o.antialias = o["\uC548\uD2F0\uC568\uB9AC\uC5B4\uC2F1"];
+        delete o["\uC548\uD2F0\uC568\uB9AC\uC5B4\uC2F1"];
+      }
+      super(o);
+    }
+  };
+  var \uC0C9\uC0C1\uD074\uB798\uC2A4 = class extends Color {
+    constructor(a, b, c) {
+      if (typeof a === "string" || typeof a === "number" && b === void 0) super(\uC0C9(a));
+      else if (typeof a === "number") super(a, b, c);
+      else if (a !== void 0) super(a);
+      else super();
+    }
+  };
+  var \uC8FC\uBCC0\uBE5B\uD074\uB798\uC2A4 = class extends AmbientLight {
+    constructor(c, \uC138\uAE30) {
+      super(c === void 0 ? void 0 : new Color(\uC0C9(c)), \uC138\uAE30);
+    }
+  };
+  var \uBC29\uD5A5\uBE5B\uD074\uB798\uC2A4 = class extends DirectionalLight {
+    constructor(c, \uC138\uAE30) {
+      super(c === void 0 ? void 0 : new Color(\uC0C9(c)), \uC138\uAE30);
+    }
+  };
+  var \uC810\uBE5B\uD074\uB798\uC2A4 = class extends PointLight {
+    constructor(c, \uC138\uAE30, \uAC70\uB9AC) {
+      super(c === void 0 ? void 0 : new Color(\uC0C9(c)), \uC138\uAE30, \uAC70\uB9AC);
+    }
+  };
+  var \uC2A4\uD3EC\uD2B8\uB77C\uC774\uD2B8\uD074\uB798\uC2A4 = class extends SpotLight {
+    constructor(c, \uC138\uAE30) {
+      super(c === void 0 ? void 0 : new Color(\uC0C9(c)), \uC138\uAE30);
+    }
+  };
+  var \uC0BC\uCC28\uC6D0 = {
+    // 기본 구조
+    \uC7A5\uBA74: Scene,
+    // Scene
+    \uC6D0\uADFC\uCE74\uBA54\uB77C: PerspectiveCamera,
+    // PerspectiveCamera
+    \uB80C\uB354\uB7EC: \uB80C\uB354\uB7EC\uD074\uB798\uC2A4,
+    // WebGLRenderer ({ 안티앨리어싱 } 지원)
+    \uC0C9: \uC0C9\uC0C1\uD074\uB798\uC2A4,
+    // Color ('하늘색' 같은 한국어 색 이름 지원)
+    // 빛
+    \uC8FC\uBCC0\uBE5B: \uC8FC\uBCC0\uBE5B\uD074\uB798\uC2A4,
+    // AmbientLight
+    \uBC29\uD5A5\uBE5B: \uBC29\uD5A5\uBE5B\uD074\uB798\uC2A4,
+    // DirectionalLight
+    \uC810\uBE5B: \uC810\uBE5B\uD074\uB798\uC2A4,
+    // PointLight
+    \uC2A4\uD3EC\uD2B8\uB77C\uC774\uD2B8: \uC2A4\uD3EC\uD2B8\uB77C\uC774\uD2B8\uD074\uB798\uC2A4,
+    // SpotLight
+    // 모양(지오메트리) · 재질 · 물체
+    \uC0C1\uC790\uBAA8\uC591: BoxGeometry,
+    // BoxGeometry
+    \uAD6C\uBAA8\uC591: SphereGeometry,
+    // SphereGeometry
+    \uD3C9\uBA74\uBAA8\uC591: PlaneGeometry,
+    // PlaneGeometry
+    \uC6D0\uD1B5\uBAA8\uC591: CylinderGeometry,
+    // CylinderGeometry
+    \uC6D0\uBFD4\uBAA8\uC591: ConeGeometry,
+    // ConeGeometry
+    \uB3C4\uB11B\uBAA8\uC591: TorusGeometry,
+    // TorusGeometry
+    \uD45C\uC900\uC7AC\uC9C8: \uD45C\uC900\uC7AC\uC9C8\uD074\uB798\uC2A4,
+    // MeshStandardMaterial ({ 색, 텍스처, ... } 지원)
+    \uBA54\uC2DC: Mesh,
+    // Mesh (모양 + 재질 = 물체)
+    // 도우미
+    \uADF8\uB8F9: Group,
+    // Group
+    \uC2DC\uACC4: Clock,
+    // Clock
+    \uD14D\uC2A4\uCC98\uB85C\uB354: TextureLoader,
+    // TextureLoader
+    // 상수
+    SRGB\uC0C9\uACF5\uAC04: SRGBColorSpace
+    // SRGBColorSpace
+  };
+  var \uC774\uBCA4\uD2B8\uC774\uB984\uD45C = {
+    \uD06C\uAE30\uBCC0\uACBD: "resize",
+    \uD720: "wheel",
+    \uD074\uB9AD: "click",
+    \uB354\uBE14\uD074\uB9AD: "dblclick",
+    \uB9C8\uC6B0\uC2A4\uB204\uB984: "mousedown",
+    \uB9C8\uC6B0\uC2A4\uC774\uB3D9: "mousemove",
+    \uB9C8\uC6B0\uC2A4\uB5CC: "mouseup",
+    \uD0A4\uB204\uB984: "keydown",
+    \uD0A4\uB5CC: "keyup",
+    \uD130\uCE58\uC2DC\uC791: "touchstart",
+    \uD130\uCE58\uC774\uB3D9: "touchmove",
+    \uD130\uCE58\uB05D: "touchend"
+  };
+  if (typeof window !== "undefined") {
+    const g = globalThis;
+    g.\uCC3D = window;
+    g.\uBB38\uC11C = document;
+    g.\uC218\uD559 = {
+      \uD30C\uC774: Math.PI,
+      // Math.PI
+      \uCF54\uC0AC\uC778: Math.cos,
+      \uC0AC\uC778: Math.sin,
+      \uD0C4\uC820\uD2B8: Math.tan,
+      // cos · sin · tan
+      \uBB34\uC791\uC704: Math.random,
+      \uC808\uB313\uAC12: Math.abs,
+      \uC81C\uACF1\uADFC: Math.sqrt,
+      \uCD5C\uC18C: Math.min,
+      \uCD5C\uB300: Math.max,
+      \uB0B4\uB9BC: Math.floor,
+      \uC62C\uB9BC: Math.ceil,
+      \uBC18\uC62C\uB9BC: Math.round
+    };
+    if (!("\uB108\uBE44" in window)) {
+      Object.defineProperty(window, "\uB108\uBE44", { get: () => window.innerWidth, configurable: true });
+      Object.defineProperty(window, "\uB192\uC774", { get: () => window.innerHeight, configurable: true });
+    }
+    if (!("\uBCF8\uBB38" in document)) {
+      Object.defineProperty(document, "\uBCF8\uBB38", { get: () => document.body, configurable: true });
+    }
+    \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Node.prototype, "\uBD99\uC774\uAE30", "appendChild");
+    if (!EventTarget.prototype["\uC774\uBCA4\uD2B8\uAC78\uAE30"]) {
+      Object.defineProperty(EventTarget.prototype, "\uC774\uBCA4\uD2B8\uAC78\uAE30", {
+        value: function(\uC885\uB958, \uB4E3\uAE30, \uC635\uC158) {
+          this.addEventListener(\uC774\uBCA4\uD2B8\uC774\uB984\uD45C[\uC885\uB958] ?? \uC885\uB958, \uB4E3\uAE30, \uC635\uC158);
+        },
+        writable: true,
+        configurable: true
+      });
+    }
+    \uC18D\uC131\uBCC4\uCE6D(MouseEvent.prototype, "\uAC00\uB85C\uC704\uCE58", "clientX");
+    \uC18D\uC131\uBCC4\uCE6D(MouseEvent.prototype, "\uC138\uB85C\uC704\uCE58", "clientY");
+    \uC18D\uC131\uBCC4\uCE6D(WheelEvent.prototype, "\uAD74\uB9B0\uC591", "deltaY");
+    \uC18D\uC131\uBCC4\uCE6D(WheelEvent.prototype, "\uAC00\uB85C\uAD74\uB9B0\uC591", "deltaX");
+    \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Array.prototype, "\uB123\uAE30", "push");
+    \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Array.prototype, "\uAC01\uAC01", "forEach");
   }
   return __toCommonJS(index_exports);
 })();

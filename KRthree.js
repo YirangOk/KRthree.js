@@ -31463,7 +31463,9 @@ void main() {
     \uCCAD\uB85D: "teal",
     \uB0A8\uC0C9: "navy",
     \uAE08\uC0C9: "gold",
-    \uC740\uC0C9: "silver"
+    \uC740\uC0C9: "silver",
+    \uC544\uC774\uBCF4\uB9AC: "ivory",
+    \uC0C1\uC544\uC0C9: "ivory"
   };
   function \uC0C9(c) {
     return typeof c === "string" && c in \uC0C9\uC0C1\uD45C ? \uC0C9\uC0C1\uD45C[c] : c;
@@ -31568,6 +31570,7 @@ void main() {
     requestAnimationFrame(\uBC18\uBCF5);
   }
   function \uB80C\uB354\uB9C1\uD558\uAE30(\uB80C\uB354\uB7EC, \uC7A5\uBA74, \uCE74\uBA54\uB77C) {
+    \uBCF4\uAE30\uB3C4\uAD6C\uB4F1\uB85D(\uC7A5\uBA74, \uCE74\uBA54\uB77C, \uB80C\uB354\uB7EC);
     \uB80C\uB354\uB7EC.render(\uC7A5\uBA74, \uCE74\uBA54\uB77C);
   }
   function \uC0BC\uCC28\uC6D0\uC2DC\uC791(opt) {
@@ -31800,6 +31803,14 @@ void main() {
       super(\uC7AC\uC9C8\uC635\uC158\uBC88\uC5ED(opt));
     }
   };
+  function \uBCF4\uAE30\uB3C4\uAD6C\uB4F1\uB85D(\uC7A5\uBA74, \uCE74\uBA54\uB77C, \uB80C\uB354\uB7EC) {
+    if (typeof window === "undefined" || !\uC7A5\uBA74.isScene) return;
+    const g = window;
+    const reg = g.__kcc3d = g.__kcc3d ?? {};
+    reg["\uC7A5\uBA74"] = \uC7A5\uBA74;
+    reg["\uCE74\uBA54\uB77C"] = \uCE74\uBA54\uB77C;
+    reg["\uB80C\uB354\uB7EC"] = \uB80C\uB354\uB7EC;
+  }
   var \uB80C\uB354\uB7EC\uD074\uB798\uC2A4 = class extends WebGLRenderer {
     constructor(opt) {
       const o = opt ? { ...opt } : void 0;
@@ -31808,6 +31819,11 @@ void main() {
         delete o["\uC548\uD2F0\uC568\uB9AC\uC5B4\uC2F1"];
       }
       super(o);
+      const \uC6D0\uBCF8render = this.render.bind(this);
+      this.render = ((\uC7A5\uBA74, \uCE74\uBA54\uB77C) => {
+        \uBCF4\uAE30\uB3C4\uAD6C\uB4F1\uB85D(\uC7A5\uBA74, \uCE74\uBA54\uB77C, this);
+        return \uC6D0\uBCF8render(\uC7A5\uBA74, \uCE74\uBA54\uB77C);
+      });
     }
   };
   var \uC0C9\uC0C1\uD074\uB798\uC2A4 = class extends Color {
@@ -31872,8 +31888,10 @@ void main() {
     // TorusGeometry
     \uD45C\uC900\uC7AC\uC9C8: \uD45C\uC900\uC7AC\uC9C8\uD074\uB798\uC2A4,
     // MeshStandardMaterial ({ 색, 텍스처, ... } 지원)
+    \uB3C4\uD615: Mesh,
+    // Mesh (모양 + 재질 = 도형)
     \uBA54\uC2DC: Mesh,
-    // Mesh (모양 + 재질 = 물체)
+    // Mesh (도형과 같음 — three.js 원어 발음)
     // 도우미
     \uADF8\uB8F9: Group,
     // Group

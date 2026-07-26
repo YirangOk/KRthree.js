@@ -122,7 +122,7 @@ npm install krthree
 | `창.이벤트걸기('크기변경' \| '휠' \| '클릭' \| '마우스누름' \| '마우스이동' \| '마우스뗌', 함수)` | addEventListener |
 | `문서` · `문서.본문` · `붙이기` | document · body · appendChild |
 | `문서.만들기('div')` · `요소.글자` · `요소.스타일` | createElement · textContent · style |
-| `수학.파이 · 코사인 · 사인 · 무작위` | Math.PI · cos · sin · random |
+| `수학.파이 · 코사인 · 사인 · 무작위(최소, 최대)` | Math.PI · cos · sin · random |
 | `목록.넣기 · 목록.각각` | push · forEach |
 | `e.가로위치 · e.세로위치 · e.굴린양` | clientX · clientY · deltaY |
 

@@ -31948,7 +31948,12 @@ void main() {
       \uC0AC\uC778: Math.sin,
       \uD0C4\uC820\uD2B8: Math.tan,
       // cos · sin · tan
-      \uBB34\uC791\uC704: Math.random,
+      // 무작위(): 0~1 · 무작위(최대): 0~최대 · 무작위(최소, 최대): 최소~최대
+      \uBB34\uC791\uC704: (\uCD5C\uC18C, \uCD5C\uB300) => {
+        if (\uCD5C\uC18C === void 0) return Math.random();
+        if (\uCD5C\uB300 === void 0) return Math.random() * \uCD5C\uC18C;
+        return \uCD5C\uC18C + Math.random() * (\uCD5C\uB300 - \uCD5C\uC18C);
+      },
       \uC808\uB313\uAC12: Math.abs,
       \uC81C\uACF1\uADFC: Math.sqrt,
       \uCD5C\uC18C: Math.min,

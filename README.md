@@ -90,12 +90,14 @@ npm install krthree
 | `삼차원.장면` | Scene |
 | `삼차원.원근카메라` | PerspectiveCamera |
 | `삼차원.렌더러` | WebGLRenderer (`{ 안티앨리어싱: true }`) |
-| `삼차원.색` | Color (`'하늘색'` 같은 한국어 색 이름 지원) |
+| `삼차원.색` | Color (`'하늘색'` `'아이보리'` 같은 한국어 색 이름 지원) |
 | `삼차원.주변빛 · 방향빛 · 점빛 · 스포트라이트` | AmbientLight · DirectionalLight · PointLight · SpotLight |
 | `삼차원.상자모양 · 구모양 · 평면모양 · 원통모양 · 원뿔모양 · 도넛모양` | BoxGeometry · SphereGeometry · … |
 | `삼차원.표준재질` | MeshStandardMaterial (`{ 색, 텍스처, 금속성, 거칠기 }`) |
 | `삼차원.도형` (=`메시`) | Mesh (모양 + 재질 = 물체) |
 | `삼차원.그룹 · 시계 · 텍스처로더` | Group · Clock · TextureLoader |
+| `삼차원.레이캐스터 · 벡터2` | Raycaster · Vector2 (클릭한 물체 찾기) |
+| `삼차원.안개` | Fog (`장면.안개 = new 삼차원.안개(색, 시작, 끝)`) |
 | `삼차원.SRGB색공간` | SRGBColorSpace |
 
 ### 속성·메서드
@@ -109,6 +111,8 @@ npm install krthree
 | `화면비율 · 투영갱신` (카메라) | aspect · updateProjectionMatrix |
 | `불러오기 · 색공간` (텍스처) | load · colorSpace |
 | `경과시간` (시계) | getDelta |
+| `카메라설정 · 교차확인` (레이캐스터) | setFromCamera · intersectObjects |
+| `자식들` (그룹·장면) | children |
 
 ### 브라우저 내장 별칭
 
@@ -117,6 +121,7 @@ npm install krthree
 | `창` · `창.너비` · `창.높이` | window · innerWidth · innerHeight |
 | `창.이벤트걸기('크기변경' \| '휠' \| '마우스누름' \| '마우스이동' \| '마우스뗌', 함수)` | addEventListener |
 | `문서` · `문서.본문` · `붙이기` | document · body · appendChild |
+| `문서.만들기('div')` · `요소.글자` · `요소.스타일` | createElement · textContent · style |
 | `수학.파이 · 코사인 · 사인 · 무작위` | Math.PI · cos · sin · random |
 | `목록.넣기 · 목록.각각` | push · forEach |
 | `e.가로위치 · e.세로위치 · e.굴린양` | clientX · clientY · deltaY |

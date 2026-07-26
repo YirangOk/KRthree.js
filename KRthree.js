@@ -31765,9 +31765,22 @@ void main() {
   \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uC704\uCE58", "position");
   \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uD68C\uC804", "rotation");
   \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uD06C\uAE30", "scale");
+  \uC18D\uC131\uBCC4\uCE6D(Object3D.prototype, "\uC790\uC2DD\uB4E4", "children");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uBC14\uB77C\uBCF4\uAE30", "lookAt");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uCD94\uAC00", "add");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uC81C\uAC70", "remove");
+  \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Raycaster.prototype, "\uCE74\uBA54\uB77C\uC124\uC815", "setFromCamera");
+  Object.defineProperty(Raycaster.prototype, "\uAD50\uCC28\uD655\uC778", {
+    value: function(\uAC1D\uCCB4\uB4E4) {
+      return this.intersectObjects(\uAC1D\uCCB4\uB4E4, true).map((\uB9DE\uC74C) => {
+        let o = \uB9DE\uC74C.object;
+        while (o && !\uAC1D\uCCB4\uB4E4.includes(o)) o = o.parent;
+        return o ?? \uB9DE\uC74C.object;
+      });
+    },
+    writable: true,
+    configurable: true
+  });
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Vector3.prototype, "\uC124\uC815", "set");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Euler.prototype, "\uC124\uC815", "set");
   \uC18D\uC131\uBCC4\uCE6D(Scene.prototype, "\uBC30\uACBD", "background");
@@ -31899,6 +31912,10 @@ void main() {
     // Clock
     \uD14D\uC2A4\uCC98\uB85C\uB354: TextureLoader,
     // TextureLoader
+    \uB808\uC774\uCE90\uC2A4\uD130: Raycaster,
+    // Raycaster (클릭한 물체 찾기)
+    \uBCA1\uD1302: Vector2,
+    // Vector2 (화면 좌표)
     // 상수
     SRGB\uC0C9\uACF5\uAC04: SRGBColorSpace
     // SRGBColorSpace
@@ -31945,6 +31962,9 @@ void main() {
       Object.defineProperty(document, "\uBCF8\uBB38", { get: () => document.body, configurable: true });
     }
     \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Node.prototype, "\uBD99\uC774\uAE30", "appendChild");
+    \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Document.prototype, "\uB9CC\uB4E4\uAE30", "createElement");
+    \uC18D\uC131\uBCC4\uCE6D(HTMLElement.prototype, "\uAE00\uC790", "textContent");
+    \uC18D\uC131\uBCC4\uCE6D(HTMLElement.prototype, "\uC2A4\uD0C0\uC77C", "style");
     if (!EventTarget.prototype["\uC774\uBCA4\uD2B8\uAC78\uAE30"]) {
       Object.defineProperty(EventTarget.prototype, "\uC774\uBCA4\uD2B8\uAC78\uAE30", {
         value: function(\uC885\uB958, \uB4E3\uAE30, \uC635\uC158) {

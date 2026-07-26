@@ -36,6 +36,37 @@ KRthree.js/
 
 `script.js` 를 고치고 저장하면 브라우저가 자동으로 새로고침됩니다.
 
+## 내려받기 · 설치 (세 가지 방법)
+
+**1) 파일로 내려받기** — [KRthree.js](https://github.com/YirangOk/KRthree.js/raw/main/KRthree.js) 파일 하나를 받아 프로젝트 폴더에 넣습니다.
+
+**2) CDN 한 줄** — 파일을 받지 않아도 됩니다.
+
+```html
+<script src="https://unpkg.com/krthree/KRthree.js"></script>
+```
+
+(같은 주소: `https://cdn.jsdelivr.net/npm/krthree/KRthree.js`)
+
+**3) npm으로 설치**
+
+```bash
+npm install krthree
+```
+
+```html
+<script src="node_modules/krthree/KRthree.js"></script>
+```
+
+어느 방법이든 불러온 다음 두 줄은 같습니다.
+
+```html
+<script>
+  Object.assign(window, KCC3D)
+  window.THREE = KCC3D.THREE
+</script>
+```
+
 ## 새 프로젝트에 넣기
 
 `KRthree.js` 파일을 복사하고 HTML에서 이렇게 불러옵니다.
@@ -63,7 +94,7 @@ KRthree.js/
 | `삼차원.주변빛 · 방향빛 · 점빛 · 스포트라이트` | AmbientLight · DirectionalLight · PointLight · SpotLight |
 | `삼차원.상자모양 · 구모양 · 평면모양 · 원통모양 · 원뿔모양 · 도넛모양` | BoxGeometry · SphereGeometry · … |
 | `삼차원.표준재질` | MeshStandardMaterial (`{ 색, 텍스처, 금속성, 거칠기 }`) |
-| `삼차원.메시` | Mesh (모양 + 재질 = 물체) |
+| `삼차원.도형` (=`메시`) | Mesh (모양 + 재질 = 물체) |
 | `삼차원.그룹 · 시계 · 텍스처로더` | Group · Clock · TextureLoader |
 | `삼차원.SRGB색공간` | SRGBColorSpace |
 

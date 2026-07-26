@@ -31784,6 +31784,7 @@ void main() {
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Vector3.prototype, "\uC124\uC815", "set");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Euler.prototype, "\uC124\uC815", "set");
   \uC18D\uC131\uBCC4\uCE6D(Scene.prototype, "\uBC30\uACBD", "background");
+  \uC18D\uC131\uBCC4\uCE6D(Scene.prototype, "\uC548\uAC1C", "fog");
   \uC18D\uC131\uBCC4\uCE6D(PerspectiveCamera.prototype, "\uD654\uBA74\uBE44\uC728", "aspect");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(PerspectiveCamera.prototype, "\uD22C\uC601\uAC31\uC2E0", "updateProjectionMatrix");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(WebGLRenderer.prototype, "\uD06C\uAE30\uC124\uC815", "setSize");
@@ -31916,6 +31917,8 @@ void main() {
     // Raycaster (클릭한 물체 찾기)
     \uBCA1\uD1302: Vector2,
     // Vector2 (화면 좌표)
+    \uC548\uAC1C: Fog,
+    // Fog (멀수록 배경색에 잠기는 안개)
     // 상수
     SRGB\uC0C9\uACF5\uAC04: SRGBColorSpace
     // SRGBColorSpace

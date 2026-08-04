@@ -31984,6 +31984,7 @@ void main() {
     }
     \uC18D\uC131\uBCC4\uCE6D(MouseEvent.prototype, "\uAC00\uB85C\uC704\uCE58", "clientX");
     \uC18D\uC131\uBCC4\uCE6D(MouseEvent.prototype, "\uC138\uB85C\uC704\uCE58", "clientY");
+    \uC18D\uC131\uBCC4\uCE6D(WheelEvent.prototype, "\uC138\uB85C\uAD74\uB9B0\uC591", "deltaY");
     \uC18D\uC131\uBCC4\uCE6D(WheelEvent.prototype, "\uAD74\uB9B0\uC591", "deltaY");
     \uC18D\uC131\uBCC4\uCE6D(WheelEvent.prototype, "\uAC00\uB85C\uAD74\uB9B0\uC591", "deltaX");
     \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Array.prototype, "\uB123\uAE30", "push");

@@ -124,7 +124,7 @@ npm install krthree
 | `문서.만들기('div')` · `요소.글자` · `요소.스타일` | createElement · textContent · style |
 | `수학.파이 · 코사인 · 사인 · 무작위(최소, 최대)` | Math.PI · cos · sin · random |
 | `목록.넣기 · 목록.각각` | push · forEach |
-| `e.가로위치 · e.세로위치 · e.굴린양` | clientX · clientY · deltaY |
+| `e.가로위치 · e.세로위치 · e.세로굴린양 · e.가로굴린양` | clientX · clientY · deltaY · deltaX |
 
 > `new` · `const` · `let` 같은 자바스크립트 언어 키워드는 그대로 씁니다.
 > (한국어 코드 스튜디오의 `새` · `상수` 키워드는 스튜디오 전용 번역 기능이라, VS Code에서는 `new` · `const`로 적습니다.)

@@ -31792,7 +31792,7 @@ void main() {
   });
   function \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uC804\uC9C4() {
     \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.forEach((\uBAA9\uD45C, \uBB3C\uCCB4) => {
-      \uBB3C\uCCB4.rotation.y += (\uBAA9\uD45C - \uBB3C\uCCB4.rotation.y) * 0.1;
+      \uBB3C\uCCB4.rotation.y += (\uBAA9\uD45C - \uBB3C\uCCB4.rotation.y) * 0.04;
       if (Math.abs(\uBAA9\uD45C - \uBB3C\uCCB4.rotation.y) < 2e-3) {
         \uBB3C\uCCB4.rotation.y = \uBAA9\uD45C;
         \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.delete(\uBB3C\uCCB4);

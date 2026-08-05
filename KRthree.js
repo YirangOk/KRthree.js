@@ -31778,6 +31778,27 @@ void main() {
     writable: true,
     configurable: true
   });
+  var \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D = /* @__PURE__ */ new Map();
+  Object.defineProperty(Object3D.prototype, "\uBD80\uB4DC\uB7FD\uAC8C\uB3CC\uAE30", {
+    value: function(\uBAA9\uD45Cy) {
+      const \uB450\uD30C\uC774 = Math.PI * 2;
+      let \uCC28 = (\uBAA9\uD45Cy - this.rotation.y) % \uB450\uD30C\uC774;
+      if (\uCC28 > Math.PI) \uCC28 -= \uB450\uD30C\uC774;
+      if (\uCC28 < -Math.PI) \uCC28 += \uB450\uD30C\uC774;
+      \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.set(this, this.rotation.y + \uCC28);
+    },
+    writable: true,
+    configurable: true
+  });
+  function \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uC804\uC9C4() {
+    \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.forEach((\uBAA9\uD45C, \uBB3C\uCCB4) => {
+      \uBB3C\uCCB4.rotation.y += (\uBAA9\uD45C - \uBB3C\uCCB4.rotation.y) * 0.1;
+      if (Math.abs(\uBAA9\uD45C - \uBB3C\uCCB4.rotation.y) < 2e-3) {
+        \uBB3C\uCCB4.rotation.y = \uBAA9\uD45C;
+        \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.delete(\uBB3C\uCCB4);
+      }
+    });
+  }
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Raycaster.prototype, "\uCE74\uBA54\uB77C\uC124\uC815", "setFromCamera");
   Object.defineProperty(Raycaster.prototype, "\uACA8\uB204\uAE30", {
     value: function(\uC9C0\uC810, \uCE74\uBA54\uB77C) {
@@ -31854,6 +31875,7 @@ void main() {
       const \uC6D0\uBCF8render = this.render.bind(this);
       this.render = ((\uC7A5\uBA74, \uCE74\uBA54\uB77C) => {
         \uBCF4\uAE30\uB3C4\uAD6C\uB4F1\uB85D(\uC7A5\uBA74, \uCE74\uBA54\uB77C, this);
+        \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uC804\uC9C4();
         return \uC6D0\uBCF8render(\uC7A5\uBA74, \uCE74\uBA54\uB77C);
       });
     }

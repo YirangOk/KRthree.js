@@ -31983,8 +31983,6 @@ void main() {
     const g = globalThis;
     g.\uCC3D = window;
     g.\uBB38\uC11C = document;
-    g.\uCF58\uC194 = console;
-    console.\uAE30\uB85D = (...\uC778\uC790) => console.log(...\uC778\uC790);
     g.\uC218\uD559 = {
       \uD30C\uC774: Math.PI,
       // Math.PI

@@ -31769,7 +31769,24 @@ void main() {
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uBC14\uB77C\uBCF4\uAE30", "lookAt");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uCD94\uAC00", "add");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Object3D.prototype, "\uC81C\uAC70", "remove");
+  Object.defineProperty(Object3D.prototype, "\uADF8\uB8F9\uB9CC\uB4E4\uAE30", {
+    value: function() {
+      const g = new Group();
+      this.add(g);
+      return g;
+    },
+    writable: true,
+    configurable: true
+  });
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Raycaster.prototype, "\uCE74\uBA54\uB77C\uC124\uC815", "setFromCamera");
+  Object.defineProperty(Raycaster.prototype, "\uACA8\uB204\uAE30", {
+    value: function(\uC9C0\uC810, \uCE74\uBA54\uB77C) {
+      const p = typeof \uC9C0\uC810?.clientX === "number" && typeof \uC9C0\uC810?.clientY === "number" ? { x: \uC9C0\uC810.clientX / window.innerWidth * 2 - 1, y: -(\uC9C0\uC810.clientY / window.innerHeight) * 2 + 1 } : \uC9C0\uC810;
+      return this.setFromCamera(p, \uCE74\uBA54\uB77C);
+    },
+    writable: true,
+    configurable: true
+  });
   Object.defineProperty(Raycaster.prototype, "\uAD50\uCC28\uD655\uC778", {
     value: function(\uAC1D\uCCB4\uB4E4) {
       return this.intersectObjects(\uAC1D\uCCB4\uB4E4, true).map((\uB9DE\uC74C) => {
@@ -31781,6 +31798,7 @@ void main() {
     writable: true,
     configurable: true
   });
+  Raycaster.prototype.\uB9DE\uC740\uAC83\uCC3E\uAE30 = Raycaster.prototype.\uAD50\uCC28\uD655\uC778;
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Vector3.prototype, "\uC124\uC815", "set");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Euler.prototype, "\uC124\uC815", "set");
   \uC18D\uC131\uBCC4\uCE6D(Scene.prototype, "\uBC30\uACBD", "background");
@@ -31913,8 +31931,10 @@ void main() {
     // Clock
     \uD14D\uC2A4\uCC98\uB85C\uB354: TextureLoader,
     // TextureLoader
+    \uAD11\uC120: Raycaster,
+    // Raycaster (클릭한 물체 찾기) — 새 이름
     \uB808\uC774\uCE90\uC2A4\uD130: Raycaster,
-    // Raycaster (클릭한 물체 찾기)
+    // Raycaster (옛 이름 — 호환 유지)
     \uBCA1\uD1302: Vector2,
     // Vector2 (화면 좌표)
     \uC548\uAC1C: Fog,

@@ -31819,7 +31819,17 @@ void main() {
     writable: true,
     configurable: true
   });
-  Raycaster.prototype.\uB2FF\uC740\uAC83\uCC3E\uAE30 = Raycaster.prototype.\uAD50\uCC28\uD655\uC778;
+  Object.defineProperty(Raycaster.prototype, "\uB2FF\uC740\uAC83\uCC3E\uAE30", {
+    value: function(\uAC1D\uCCB4\uB4E4) {
+      return this.intersectObjects(\uAC1D\uCCB4\uB4E4, true).map((\uB9DE\uC74C) => {
+        ;
+        \uB9DE\uC74C.\uBB3C\uCCB4 = \uB9DE\uC74C.object;
+        return \uB9DE\uC74C;
+      });
+    },
+    writable: true,
+    configurable: true
+  });
   Raycaster.prototype.\uB9DE\uC740\uAC83\uCC3E\uAE30 = Raycaster.prototype.\uAD50\uCC28\uD655\uC778;
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Vector3.prototype, "\uC124\uC815", "set");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Euler.prototype, "\uC124\uC815", "set");

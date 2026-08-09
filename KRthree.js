@@ -31819,6 +31819,7 @@ void main() {
     writable: true,
     configurable: true
   });
+  Raycaster.prototype.\uB2FF\uC740\uAC83\uCC3E\uAE30 = Raycaster.prototype.\uAD50\uCC28\uD655\uC778;
   Raycaster.prototype.\uB9DE\uC740\uAC83\uCC3E\uAE30 = Raycaster.prototype.\uAD50\uCC28\uD655\uC778;
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Vector3.prototype, "\uC124\uC815", "set");
   \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Euler.prototype, "\uC124\uC815", "set");

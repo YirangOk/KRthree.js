@@ -32026,6 +32026,15 @@ void main() {
     \uBA54\uC11C\uB4DC\uBCC4\uCE6D(Document.prototype, "\uB9CC\uB4E4\uAE30", "createElement");
     \uC18D\uC131\uBCC4\uCE6D(HTMLElement.prototype, "\uAE00\uC790", "textContent");
     \uC18D\uC131\uBCC4\uCE6D(HTMLElement.prototype, "\uC2A4\uD0C0\uC77C", "style");
+    Object.defineProperty(CSSStyleDeclaration.prototype, "\uD45C\uC2DC", {
+      get() {
+        return this.display;
+      },
+      set(\uAC12) {
+        this.display = \uAC12 === "\uBCF4\uC784" ? "block" : \uAC12 === "\uC228\uAE40" ? "none" : \uAC12;
+      },
+      configurable: true
+    });
     if (!EventTarget.prototype["\uC774\uBCA4\uD2B8\uAC78\uAE30"]) {
       Object.defineProperty(EventTarget.prototype, "\uC774\uBCA4\uD2B8\uAC78\uAE30", {
         value: function(\uC885\uB958, \uB4E3\uAE30, \uC635\uC158) {

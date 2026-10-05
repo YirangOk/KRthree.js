@@ -1,6 +1,9 @@
 # GitHub Release를 발행하면 npm에 자동 배포하는 워크플로.
 # 버전은 릴리스 태그(v1.0.1)를 그대로 따라간다 — package.json을 미리 고칠 필요 없음.
-# 준비물: 저장소 Secrets에 NPM (npm Granular Access Token, krthree 쓰기 권한 + 2FA 우회)
+# 인증: npm Trusted Publishing(OIDC)을 먼저 시도하고, 설정 전이면 Secrets의 NPM 토큰으로 대신한다.
+#   npmjs.com 패키지 설정에서 Trusted Publisher(YirangOk/KRthree.js, publish.yml)를 등록한 뒤에는
+#   Secret NPM을 지우고 npm 토큰을 폐기한다.
+# action은 태그가 바뀌어도 영향받지 않도록 커밋 SHA로 고정한다.
 name: npm 배포
 
 on:
@@ -9,22 +12,23 @@ on:
 
 permissions:
   contents: read
+  id-token: write # Trusted Publishing·provenance용 OIDC 토큰
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
-          node-version: 20
+          node-version: 24 # Trusted Publishing은 npm 11.5.1 이상 필요
           registry-url: https://registry.npmjs.org
 
       - name: 버전을 릴리스 태그에 맞추기 (v1.0.1 → 1.0.1)
         run: npm version "${GITHUB_REF_NAME#v}" --no-git-tag-version --allow-same-version
 
       - name: npm에 배포
-        run: npm publish
+        run: npm publish --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM }}

@@ -36,27 +36,17 @@ KRthree.js/
 
 `script.js` 를 고치고 저장하면 브라우저가 자동으로 새로고침됩니다.
 
-## 내려받기 · 설치 (세 가지 방법)
+## 내려받기 (두 가지 방법)
 
-**1) 파일로 내려받기** — [KRthree.js](https://github.com/YirangOk/KRthree.js/raw/main/KRthree.js) 파일 하나를 받아 프로젝트 폴더에 넣습니다.
+**1) 파일로 내려받기** — [KRthree.js](https://github.com/YirangOk/KRthree.js/raw/main/KRthree.js) 파일 하나를 받아 프로젝트 폴더에 넣습니다. ([Releases](https://github.com/YirangOk/KRthree.js/releases)에서 버전별로 받을 수도 있습니다.)
 
-**2) CDN 한 줄** — 파일을 받지 않아도 됩니다.
-
-```html
-<script src="https://unpkg.com/krthree/KRthree.js"></script>
-```
-
-(같은 주소: `https://cdn.jsdelivr.net/npm/krthree/KRthree.js`)
-
-**3) npm으로 설치**
-
-```bash
-npm install krthree
-```
+**2) CDN 한 줄** — 파일을 받지 않아도 됩니다. 이 GitHub 저장소의 파일을 그대로 불러옵니다.
 
 ```html
-<script src="node_modules/krthree/KRthree.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/YirangOk/KRthree.js@main/KRthree.js"></script>
 ```
+
+> npm 패키지는 아직 올라가 있지 않습니다. npm에서 `krthree` 이름의 패키지를 찾더라도 이 저장소에서 올린 것인지 확인하기 전에는 설치하지 마세요.
 
 어느 방법이든 불러온 다음 두 줄은 같습니다.
 

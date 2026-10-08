@@ -244,3 +244,41 @@ test('부드럽게돌기는 가까운 방향으로 돈다', () => {
   그리기(렌더러, 장면, 카메라, 300)
   assert.ok(Math.abs(큐브.rotation.y + Math.PI / 2) < 1e-12)
 })
+
+test('부드럽게돌기에 숫자가 아닌 각도를 주면 돌리지 않고 경고만 한다', (t) => {
+  const 경고 = t.mock.method(console, 'warn', () => {})
+  const 장면 = KCC3D.장면만들기()
+  const 카메라 = KCC3D.카메라만들기(75, 1)
+  const 렌더러 = 가짜렌더러()
+
+  for (const 잘못된값 of [undefined, 'abc', NaN, Infinity, {}]) {
+    const 큐브 = KCC3D.장면에추가하기(장면, KCC3D.큐브만들기())
+    큐브.rotation.y = 0.5
+    큐브.부드럽게돌기(잘못된값)
+    그리기(렌더러, 장면, 카메라, 2)
+    assert.equal(큐브.rotation.y, 0.5, `${String(잘못된값)}: 회전값이 그대로여야 한다`)
+
+    // 잘못 부른 뒤에도 물체가 망가지지 않아 다시 쓸 수 있다.
+    큐브.부드럽게돌기(1)
+    그리기(렌더러, 장면, 카메라, 300)
+    assert.equal(큐브.rotation.y, 1, `${String(잘못된값)}: 다시 부르면 정상으로 돈다`)
+  }
+  assert.equal(경고.mock.callCount(), 5, '잘못 부를 때마다 경고 한 번')
+  assert.match(String(경고.mock.calls[0].arguments[0]), /부드럽게돌기/)
+})
+
+test('부드럽게돌기: 숫자로 바뀌는 값(숫자 문자열·null)은 예전처럼 받는다', (t) => {
+  const 경고 = t.mock.method(console, 'warn', () => {})
+  const 장면 = KCC3D.장면만들기()
+  const 카메라 = KCC3D.카메라만들기(75, 1)
+  const 렌더러 = 가짜렌더러()
+  const 큐브 = KCC3D.장면에추가하기(장면, KCC3D.큐브만들기())
+
+  큐브.부드럽게돌기('1.5')
+  그리기(렌더러, 장면, 카메라, 300)
+  assert.equal(큐브.rotation.y, 1.5)
+  큐브.부드럽게돌기(null) // null은 0으로 계산된다
+  그리기(렌더러, 장면, 카메라, 300)
+  assert.equal(큐브.rotation.y, 0)
+  assert.equal(경고.mock.callCount(), 0)
+})

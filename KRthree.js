@@ -31784,6 +31784,10 @@ void main() {
     value: function(\uBAA9\uD45Cy) {
       const \uB450\uD30C\uC774 = Math.PI * 2;
       let \uCC28 = (\uBAA9\uD45Cy - this.rotation.y) % \uB450\uD30C\uC774;
+      if (!Number.isFinite(\uCC28)) {
+        console.warn("\uBD80\uB4DC\uB7FD\uAC8C\uB3CC\uAE30: \uAC01\uB3C4\uAC00 \uC22B\uC790\uAC00 \uC544\uB2C8\uB77C\uC11C \uB3CC\uB9AC\uC9C0 \uC54A\uC558\uC5B4\uC694. \uBC1B\uC740 \uAC12:", \uBAA9\uD45Cy);
+        return;
+      }
       if (\uCC28 > Math.PI) \uCC28 -= \uB450\uD30C\uC774;
       if (\uCC28 < -Math.PI) \uCC28 += \uB450\uD30C\uC774;
       \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.set(this, this.rotation.y + \uCC28);

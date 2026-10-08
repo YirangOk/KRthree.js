@@ -282,3 +282,12 @@ test('부드럽게돌기: 숫자로 바뀌는 값(숫자 문자열·null)은 예
   assert.equal(큐브.rotation.y, 0)
   assert.equal(경고.mock.callCount(), 0)
 })
+
+test('sourceMappingURL이 저장소에 없는 파일을 가리키지 않는다', () => {
+  // 빌드가 붙이는 "//# sourceMappingURL=index.global.js.map" 줄이 남아 있으면
+  // 개발자 도구가 없는 파일을 찾다가 404 경고를 낸다. 맵 파일을 함께 넣지 않을 거면 그 줄을 지운다.
+  const 맵 = 소스.match(/^\/\/# sourceMappingURL=(\S+)\s*$/m)
+  if (맵 && !맵[1].startsWith('data:')) {
+    assert.ok(fs.existsSync(path.join(path.dirname(파일), 맵[1])), `${맵[1]} 파일이 저장소에 없다`)
+  }
+})

@@ -8,6 +8,9 @@
   "files": [
     "KRthree.js"
   ],
+  "scripts": {
+    "test": "node --test"
+  },
   "keywords": [
     "three",
     "threejs",

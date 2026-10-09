@@ -31488,7 +31488,7 @@ void main() {
     return new PerspectiveCamera(fov2, aspect2, near, far);
   }
   function \uB80C\uB354\uB7EC\uB9CC\uB4E4\uAE30(container = document.body) {
-    const \uB80C\uB354\uB7EC = new WebGLRenderer({ antialias: true });
+    const \uB80C\uB354\uB7EC = new \uB80C\uB354\uB7EC\uD074\uB798\uC2A4({ antialias: true });
     \uB80C\uB354\uB7EC.setPixelRatio(window.devicePixelRatio || 1);
     const [w, h] = container === document.body ? [window.innerWidth, window.innerHeight] : [container.clientWidth, container.clientHeight];
     \uB80C\uB354\uB7EC.setSize(w, h);
@@ -31571,6 +31571,7 @@ void main() {
   }
   function \uB80C\uB354\uB9C1\uD558\uAE30(\uB80C\uB354\uB7EC, \uC7A5\uBA74, \uCE74\uBA54\uB77C) {
     \uBCF4\uAE30\uB3C4\uAD6C\uB4F1\uB85D(\uC7A5\uBA74, \uCE74\uBA54\uB77C, \uB80C\uB354\uB7EC);
+    if (!(\uB80C\uB354\uB7EC instanceof \uB80C\uB354\uB7EC\uD074\uB798\uC2A4)) \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uC804\uC9C4();
     \uB80C\uB354\uB7EC.render(\uC7A5\uBA74, \uCE74\uBA54\uB77C);
   }
   function \uC0BC\uCC28\uC6D0\uC2DC\uC791(opt) {
@@ -31783,6 +31784,10 @@ void main() {
     value: function(\uBAA9\uD45Cy) {
       const \uB450\uD30C\uC774 = Math.PI * 2;
       let \uCC28 = (\uBAA9\uD45Cy - this.rotation.y) % \uB450\uD30C\uC774;
+      if (!Number.isFinite(\uCC28)) {
+        console.warn("\uBD80\uB4DC\uB7FD\uAC8C\uB3CC\uAE30: \uAC01\uB3C4\uAC00 \uC22B\uC790\uAC00 \uC544\uB2C8\uB77C\uC11C \uB3CC\uB9AC\uC9C0 \uC54A\uC558\uC5B4\uC694. \uBC1B\uC740 \uAC12:", \uBAA9\uD45Cy);
+        return;
+      }
       if (\uCC28 > Math.PI) \uCC28 -= \uB450\uD30C\uC774;
       if (\uCC28 < -Math.PI) \uCC28 += \uB450\uD30C\uC774;
       \uBD80\uB4DC\uB7FD\uAC8C\uD68C\uC804\uBAA9\uB85D.set(this, this.rotation.y + \uCC28);
@@ -32063,4 +32068,3 @@ three/build/three.module.js:
    * SPDX-License-Identifier: MIT
    *)
 */
-//# sourceMappingURL=index.global.js.map
